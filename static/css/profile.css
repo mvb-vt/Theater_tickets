@@ -1,0 +1,20 @@
+.profile-view{
+    width: 20%;
+    height: 40%;
+    position: fixed;
+    left:25%;
+    top: 33%;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 300px;
+    position: fixed;
+    right: 30%;
+    top: 30%;
+    text-align: center;
+}

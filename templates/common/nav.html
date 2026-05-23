@@ -1,0 +1,28 @@
+{% load static %}
+
+<header>
+    <a href="{% url 'home' %}">
+        <img src="{% static 'images/my logo.png' %}" alt="Site Logo">
+    </a>
+
+    <div class="nav-actions">
+        {% if user.is_authenticated %}
+            {% if request.resolver_match.url_name != 'profile details' %}
+                <a href="{% url 'profile details' %}">
+                    {% if user.profile.profile_picture %}
+                        <img src="{{ user.profile.profile_picture.url }}" alt="Profile image" width="50" height="20">
+                    {% else %}
+                        Profile
+                    {% endif %}
+                </a>
+            {% endif %}
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="nav-button">Logout</button>
+            </form>
+        {% elif request.resolver_match.url_name != 'login' and request.resolver_match.url_name != 'register' %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+
+</header>
