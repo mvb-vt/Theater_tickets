@@ -1,28 +1,53 @@
 {% load static %}
 
-<header>
-    <a href="{% url 'home' %}">
-        <img src="{% static 'images/my logo.png' %}" alt="Site Logo">
-    </a>
+<div class="nav-bar">
+    <header>
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/my logo.png' %}" alt="Site Logo">
+            </a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            ☰
+        </button>
+        <div class="nav-bar-collapse">
 
-    <div class="nav-actions">
-        {% if user.is_authenticated %}
-            {% if request.resolver_match.url_name != 'profile details' %}
-                <a href="{% url 'profile details' %}">
-                    {% if user.profile.profile_picture %}
-                        <img src="{{ user.profile.profile_picture.url }}" alt="Profile image" width="50" height="20">
-                    {% else %}
-                        Profile
-                    {% endif %}
-                </a>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'programs' %}">Programs</a>
+            <a href="{% url 'news' %}">News</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'tickets' %}">Tickets</a>
+
+        </div>
+        <div class="nav-actions">
+            {% if user.is_authenticated %}
+                {% if request.resolver_match.url_name != 'profile details' %}
+                    <a href="{% url 'profile details' %}"> Profile</a>
+                {% endif %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-button">Logout</button>
+                </form>
+            {% elif request.resolver_match.url_name != 'login' and request.resolver_match.url_name != 'register' %}
+                <a href="{% url 'login' %}">Login</a>
             {% endif %}
-            <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit" class="nav-button">Logout</button>
-            </form>
-        {% elif request.resolver_match.url_name != 'login' and request.resolver_match.url_name != 'register' %}
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-    </div>
+        </div>
 
-</header>
+    </header>
+</div>
+
+<script>
+    (function () {
+        const toggle = document.querySelector('.nav-toggle');
+        const menu = document.querySelector('.nav-bar-collapse');
+
+        if (!toggle || !menu) {
+            return;
+        }
+
+        toggle.addEventListener('click', function () {
+            const isOpen = menu.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+    })();
+</script>

@@ -16,13 +16,18 @@ body {
     flex-direction: column;
 }
 
+.nav-bar{
+    background: black;
+    height: 70px;
+}
+
 header {
-    background-color: #0B0C10;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 3%;
+    margin-top: 3px;
     box-sizing: border-box;
     color: greenyellow;
 }
@@ -32,11 +37,35 @@ header a {
     text-decoration: none;
 }
 
+.logo{
+    background: red;
+    height: 90%;
+    max-width: 250px;
+
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 12px;
+}
+
+.nav-bar-collapse {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    padding: 0;
 }
 
 .nav-actions form {
@@ -69,6 +98,46 @@ h1 {
 .nav-button:hover,
 .nav-actions a:hover {
     text-decoration: underline;
+}
+
+.nav-bar-collapse a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        height: auto;
+    }
+
+    header {
+        flex-wrap: wrap;
+        align-items: center;
+        row-gap: 8px;
+    }
+
+    .nav-toggle {
+        display: block;
+        margin-left: auto;
+        order: 2;
+    }
+
+    .nav-actions {
+        order: 3;
+    }
+
+    .nav-bar-collapse {
+        display: none;
+        width: 100%;
+        order: 4;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 8px 0;
+    }
+
+    .nav-bar-collapse.is-open {
+        display: flex;
+    }
 }
 
 footer {
