@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <div>
+    <div class="theatrical-performances">
+
+    </div>
         <h1>
             {% if user.is_authenticated %}
                 Welcome {{ user.email }} !!!
@@ -9,6 +12,4 @@
                 Welcome to our site
             {% endif %}
         </h1>
-    </div>
-
 {% endblock %}
