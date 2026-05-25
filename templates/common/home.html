@@ -2,14 +2,26 @@
 {% load static %}
 
 {% block content %}
-    <div class="theatrical-performances">
-
+    <div class="slider-area">
+        <div class="productions-content">
+            <div class="performance">
+                <a class="performance-item is-active" href="{% url 'home' %}">
+                    <img src="{% static 'images/mylogo.png' %}" alt="Site Logo">
+                </a>
+                <a class="performance-item" href="{% url 'home' %}">
+                    <img src="{% static 'images/mylogo1.png' %}" alt="Site Logo">
+                </a>
+                <a class="performance-item" href="{% url 'home' %}">
+                    <img src="{% static 'images/mylogo2.png' %}" alt="Site Logo">
+                </a>
+            </div>
+        </div>
     </div>
-        <h1>
-            {% if user.is_authenticated %}
-                Welcome {{ user.email }} !!!
-            {% else %}
-                Welcome to our site
-            {% endif %}
-        </h1>
+    <h1>
+        {% if user.is_authenticated %}
+            Welcome {{ user.email }} !!!
+        {% else %}
+            Welcome to our site
+        {% endif %}
+    </h1>
 {% endblock %}
