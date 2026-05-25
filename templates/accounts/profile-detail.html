@@ -8,26 +8,12 @@
     <h1>Profile of {{ user.email }}</h1>
 
     <div class="profile-view">
-        <p><strong>Email:</strong> {{ profile.user.email }}</p>
-        <p><strong>First name:</strong> {{ profile.first_name|default:"-" }}</p>
-        <p><strong>Last name:</strong> {{ profile.last_name|default:"-" }}</p>
-        <p>
-            <strong>Date of birth:</strong>
-            {% if profile.data_of_birth %}
-                <span title="YYYY-MM-DD">{{ profile.data_of_birth }}</span>
-            {% else %}
-                <span title="YYYY-MM-DD">YYYY-MM-DD</span>
-            {% endif %}
-        </p>
-        <div class='profile-picture'><strong>Profile picture:</strong>
-            {% if profile.profile_picture %}
-               <img src="{{ profile.profile_picture.url }}" alt="Profile picture">
-            {% else %}
-                <img src="{% static 'images/eblank.png' %}" alt="Default profile picture">
-            {% endif %}
-        </div>
-
-        <a href="{% url 'profile edit' %}">
+        <p><strong>Email: </strong> {{ profile.user.email }}</p>
+        <p><strong>First name: </strong> {{ profile.first_name|default:"-" }}</p>
+        <p><strong>Last name: </strong> {{ profile.last_name|default:"-" }}</p>
+        <p><strong>Phone: </strong> {{ profile.phone_number }}</p>
+        
+        <a href="{% url 'profile edit' %}">                                                                                             
             <button type="button">Edit profile</button>
         </a>
         <a href="{% url 'profile delete' %}">
