@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'phonenumber_field',
+    'tickets.apps.TicketsConfig'
 ]
 
 MIDDLEWARE = [
